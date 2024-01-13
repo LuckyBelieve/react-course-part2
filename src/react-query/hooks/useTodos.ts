@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-interface Todo {
+export interface Todo {
   id: number;
   title: string;
   userId: number;
@@ -15,6 +15,7 @@ const useTodos = () =>
       axios
         .get<Todo[]>("https://jsonplaceholder.typicode.com/todos")
         .then((res) => res.data),
+    staleTime: 10 * 1000
   });
 
 export default useTodos;
